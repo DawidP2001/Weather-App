@@ -1,0 +1,1 @@
+In this repo you can see my notes and projects I did to learn how to use the React framework.
