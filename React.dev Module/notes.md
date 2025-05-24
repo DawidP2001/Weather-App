@@ -102,3 +102,19 @@ The easiest way to achieve this is to go up in the component hierarchy to a comm
 
 ## Tutorial: Tic-Tac-Toe
 Here I store notes for a practice project where I create a React game.
+
+- To use react apps you need to have npm
+- **Node Package Manager** - Is the default package manager for node.js
+- **Package manager** - Is a piece of software that aids your project in several ways. It lets you easily install dependent libraries, manage versions and run script.
+- **Node.js** - IS a runtime environement that lets you run js in the backend, instead of just running js in the browser.
+- You use curly brackets to enter passed arguments into a function 
+```
+function Square({ value }) {
+  return <button className="square">{value}</button>;
+}
+```
+- You pass arguments into react components like so: `<Square value="4" />`
+- Use states to make components 'remember' stuff.
+- Remember when needing data from children components, store data in the parent.
+- If you have a setter for a component that needs to be activated by a child, pass that function to the child element.
+- **STOPPED AT THE COMPLETING THE GAME SECTION**
