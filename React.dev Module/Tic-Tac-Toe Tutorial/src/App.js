@@ -102,7 +102,12 @@ export default function Game() {
   function jumpTo(nextMove) {
     setCurrentMove(nextMove);
   }
-
+  let row, col;
+  if (currentMove > 0) {
+    [row, col] = calculateLocation(history.slice(0, currentMove + 1));
+  } else {
+    row = col = null; // No move made yet
+  }
   const moves = history.map((squares, move) => {
     if (toggleOrder) {
       move = history.length - 1 - move; // Reverse the order of moves
@@ -110,8 +115,6 @@ export default function Game() {
     let description;
     if (move > 0) {
       if (move === currentMove) {
-        let row, col;
-        row, col = calculateLocation(history);
         return (
           <li key={move}>
             You are at move #{move}<br></br>
@@ -167,8 +170,7 @@ function calculateDraw(squares) {
 function calculateLocation(history) {
   let index = history.length - 1;
   let location;
-  for (let i = 0; i < history.length; i++) {
-    console.log(history[0])
+  for (let i = 0; i < history[index].length; i++) {
     if (history[index][i] !== history[index-1][i]) {
       location = i;  // Found difference at index i
     }
