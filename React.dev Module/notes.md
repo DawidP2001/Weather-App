@@ -117,4 +117,14 @@ function Square({ value }) {
 - Use states to make components 'remember' stuff.
 - Remember when needing data from children components, store data in the parent.
 - If you have a setter for a component that needs to be activated by a child, pass that function to the child element.
-- **STOPPED AT THE COMPLETING THE GAME SECTION**
+- In javascript inner functions have access to variables in the outer function, this is called **closures**
+- It may be easer to pass functions as props instead of calls, since it could create infinite loops
+- In React it is convention to use "onSomething" for names of props that represent events, and "handleSomething" for the function definitions which handle the "on" events.
+- Left of at this section:
+```
+The Board component is fully controlled by the props passed to it by the Game component. You need to implement the handlePlay function in the Game component to get the game working again.
+
+What should handlePlay do when called? Remember that Board used to call setSquares with an updated array; now it passes the updated squares array to onPlay.
+
+The handlePlay function needs to update Game’s state to trigger a re-render, but you don’t have a setSquares function that you can call any more—you’re now using the history state variable to store this information. You’ll want to update history by appending the updated squares array as a new history entry. You also want to toggle xIsNext, just as Board used to do:
+```
