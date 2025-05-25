@@ -121,3 +121,4 @@ function Square({ value }) {
 - It may be easer to pass functions as props instead of calls, since it could create infinite loops
 - In React it is convention to use "onSomething" for names of props that represent events, and "handleSomething" for the function definitions which handle the "on" events.
 - **...** is the **spread operator** in javascript, you use it to copy all the previous elements in an array, unlike push you use it copy instead appending original.
+- Use states when you need to store data that needs to be available after the component is refreshed

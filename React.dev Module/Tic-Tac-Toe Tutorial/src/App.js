@@ -13,7 +13,14 @@
 
 import { useState } from "react";
 
-function Square({ value, onSquareClick }) {
+function Square({ value, onSquareClick, winners, location }) {
+  if (winners && winners.includes(location)) {
+    return (
+      <button className="square winner" onClick={onSquareClick}>
+        {value}
+      </button>
+    );
+  }
   return (
     <button className="square" onClick={onSquareClick}>
       {value}
@@ -35,38 +42,57 @@ function Board({ xIsNext, squares, onPlay }) {
     onPlay(nextSquares);
   }
   const winner = calculateWinner(squares);
+  const draw = calculateDraw(squares);
   let status;
   if (winner) {
-    status = "Winner: " + winner;
-  } else {
+    status = "Winner: " + winner[0];
+      return (
+    <>
+      <div className="status">{status}</div>
+    {[0, 1, 2].map((i) => (
+      <div key={i} className="board-row">
+        {[0, 1, 2].map((j) => (
+          <Square
+            key={i * 3 + j}
+            value={squares[i * 3 + j]}
+            onSquareClick={() => handleClick(i * 3 + j)}
+            winners={[winner[1], winner[2], winner[3]]} // Pass winning indices
+            location={i * 3 + j}
+          />
+        ))}
+      </div>
+    ))}
+    </>
+  );
+  } else if(draw) {
+    status = "It's a draw!";
+  }
+  else {
     status = "Next player: " + (xIsNext ? "X" : "O");
   }
   return (
     <>
       <div className="status">{status}</div>
-      <div className="board-row">
-        <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
-        <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
-        <Square value={squares[2]} onSquareClick={() => handleClick(2)} />
+    {[0, 1, 2].map((i) => (
+      <div key={i} className="board-row">
+        {[0, 1, 2].map((j) => (
+          <Square
+            key={i * 3 + j}
+            value={squares[i * 3 + j]}
+            onSquareClick={() => handleClick(i * 3 + j)}
+          />
+        ))}
       </div>
-      <div className="board-row">
-        <Square value={squares[3]} onSquareClick={() => handleClick(3)} />
-        <Square value={squares[4]} onSquareClick={() => handleClick(4)} />
-        <Square value={squares[5]} onSquareClick={() => handleClick(5)} />
-      </div>
-      <div className="board-row">
-        <Square value={squares[6]} onSquareClick={() => handleClick(6)} />
-        <Square value={squares[7]} onSquareClick={() => handleClick(7)} />
-        <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
-      </div>
+    ))}
     </>
   );
 }
 export default function Game() {
-  const xIsNext = currentMove % 2 === 0;
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const [currentMove, setCurrentMove] = useState(0);
   const currentSquares = history[currentMove];
+  const xIsNext = currentMove % 2 === 0;
+  const [toggleOrder, setToggleOrder] = useState(false);
   
   function handlePlay(nextSquares) {
     const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
@@ -78,8 +104,21 @@ export default function Game() {
   }
 
   const moves = history.map((squares, move) => {
+    if (toggleOrder) {
+      move = history.length - 1 - move; // Reverse the order of moves
+    }
     let description;
     if (move > 0) {
+      if (move === currentMove) {
+        let row, col;
+        row, col = calculateLocation(history);
+        return (
+          <li key={move}>
+            You are at move #{move}<br></br>
+            Row: {row}, Col: {col}
+          </li>
+        );
+      }
       description = 'Go to move #' + move;
     } else {
       description = 'Go to game start';
@@ -93,6 +132,7 @@ export default function Game() {
 
   return (
     <div className="game">
+      <button onClick={() =>setToggleOrder(!toggleOrder)}>Change Order of Buttons</button>
       <div className="game-board">
         <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
       </div>
@@ -116,8 +156,25 @@ function calculateWinner(squares) {
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
+      return [squares[a], a, b, c]; // Return the winner and the winning indices
     }
   }
   return null;
+}
+function calculateDraw(squares) {
+  return squares.every(square => square !== null) && !calculateWinner(squares);
+}
+function calculateLocation(history) {
+  let index = history.length - 1;
+  let location;
+  for (let i = 0; i < history.length; i++) {
+    console.log(history[0])
+    if (history[index][i] !== history[index-1][i]) {
+      location = i;  // Found difference at index i
+    }
+  }
+  let row, col;
+  row = Math.floor(location / 3);
+  col = location % 3;
+  return [row, col];
 }
