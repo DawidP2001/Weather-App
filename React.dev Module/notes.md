@@ -121,4 +121,29 @@ function Square({ value }) {
 - It may be easer to pass functions as props instead of calls, since it could create infinite loops
 - In React it is convention to use "onSomething" for names of props that represent events, and "handleSomething" for the function definitions which handle the "on" events.
 - **...** is the **spread operator** in javascript, you use it to copy all the previous elements in an array, unlike push you use it copy instead appending original.
-- Use states when you need to store data that needs to be available after the component is refreshed
+- Use states when you need to store data that needs to be available after the component is refreshed 
+
+## Thinking in React
+To implement a UI in React, you will usually follow the same five steps
+
+### Step 1: Break the UI into a component hierarchy
+Once u receive the data draw boxes around speicifc elements, and figure out which components belong where in the hierarchy.
+
+### Step 2: Build a static version in React
+Build a static version with no interactivity, like states.
+
+### Step 3: Find the minimal but complete representation of UI state
+Find the states and props that need to be added into your model, and find the minimal approach to accompish interactivity while following the DRY (don't repeat yourself) principal.
+
+There are 2 types of model data in react:
+**Props** are like arguments you pass
+
+**State** is like a component's memory
+
+### Step 4: Identify where your state should live 
+After implementing minimal state data, you need to find out which component is responsible for changing these states. Remember, **React uses one-way data flow down the component hierarchy**. 
+
+If you can't find a component that can hold a specifc state, you can just create a component just for that purpose.
+
+### Step 5: Add inverse data flow
+To let components pass data to higher components you can pass state change props to children and this will update the parents state, and pass data.
