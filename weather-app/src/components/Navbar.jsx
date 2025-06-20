@@ -1,0 +1,17 @@
+export default function Navbar() {
+  return (
+    <nav className="bg-blue-500 p-4 positiong: fixed top-0 z-50 w-full left-0">
+      <div className="container mx-auto flex justify-between items-center">
+        <h1 className="text-white text-2xl font-bold">Weather App</h1>
+        <ul className="flex space-x-4">
+          <li>
+            <a href="/" className="!text-white hover:text-gray-200">Home</a>
+          </li>
+          <li>
+            <a href="/about" className="!text-white hover:text-gray-200">About</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  );
+}
