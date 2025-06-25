@@ -1,7 +1,7 @@
 export default function dayForecast({day, temperature, condition}) {
     return (
         <>
-            <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+            <div class="mb-20 max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
                 <a href="#">
                     <img class="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt="" />
                 </a>

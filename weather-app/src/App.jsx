@@ -7,12 +7,14 @@ import Footer from './components/Footer.jsx'
 import WeatherSection from './components/WeatherSection.jsx'
 import Location from './components/Location.jsx'
 import HourlyForecast from './components/HourlyForecast.jsx'  
+import SearchRow from './components/SearchRow.jsx' 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
       <Navbar />
+      <SearchRow />
       <Location location="Dublin, Co.Dublin, Ireland"/>
       <HourlyForecast />
       <WeatherSection weatherData={{ temperature: 25, condition: 'Sunny' }} />
