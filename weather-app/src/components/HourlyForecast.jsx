@@ -18,7 +18,12 @@ const options = {
 export default function HourlyForecast() {
   return (
     <div>
-      return <Chart chartType="AreaChart" data={data} options={options} />
+      <div>
+        <button>Temperature</button>
+        <button>Percipitation</button>
+        <button>Wind Speed</button>
+      </div>
+      <Chart chartType="AreaChart" data={data} options={options} />
     </div>
   );
 }

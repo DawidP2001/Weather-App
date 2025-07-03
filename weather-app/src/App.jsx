@@ -12,14 +12,14 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
+    <div className='flex flex-col items-center justify-center w-full mb-0'>
       <Navbar />
       <SearchRow />
       <Location location="Dublin, Co.Dublin, Ireland"/>
       <HourlyForecast />
       <WeatherSection weatherData={{ temperature: 25, condition: 'Sunny' }} />
       <Footer />
-    </>
+    </div>
   )
 }
 
