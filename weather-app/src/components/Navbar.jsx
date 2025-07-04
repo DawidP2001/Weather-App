@@ -10,6 +10,9 @@ export default function Navbar() {
           <li>
             <a href="/about" className="!text-white hover:text-gray-200">About</a>
           </li>
+          <li>
+            <a href="/about" className="!text-white hover:text-gray-200">Login</a>
+          </li>
         </ul>
       </div>
     </nav>

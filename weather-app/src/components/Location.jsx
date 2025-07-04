@@ -4,8 +4,8 @@ import sunnyAndCloudy from "../assets/sunny-and-cloudy.png";
 export default function WeatherSection({ location }) {
     return (
         <>
-            <div classNameName="flex flex-row">
-                <div>
+            <div className="flex flex-row justify-around items-center" style={{ width: '100%' }}>
+                <div className="w-50">
                     <div className="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96">
                         <div className="relative h-56 m-2.5 overflow-hidden text-white rounded-md">
                             <img src={sunnyAndCloudy} alt="card-image" />
@@ -28,7 +28,9 @@ export default function WeatherSection({ location }) {
                         </div>
                     </div>  
                 </div>
-                <LocationMap lat="53.349805" lon="-6.26031" />
+                <div className="w-50 z-0">
+                    <LocationMap lat="53.349805" lon="-6.26031" />
+                </div>
             </div>
         </>
     );
