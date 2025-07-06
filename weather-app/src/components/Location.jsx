@@ -1,7 +1,9 @@
 import LocationMap from "./LocationMap";
 import sunnyAndCloudy from "../assets/sunny-and-cloudy.png";
 
-export default function WeatherSection({ location }) {
+export default function WeatherSection({ location, selectedDay }) {
+
+    console.log("Selected Day:", selectedDay);
     return (
         <>
             <div className="flex flex-row justify-around items-center" style={{ width: '100%' }}>
@@ -32,6 +34,8 @@ export default function WeatherSection({ location }) {
                     <LocationMap lat="53.349805" lon="-6.26031" />
                 </div>
             </div>
+            <p>Hello</p>
+            <p>{selectedDay?.date}</p>
         </>
     );
 }
