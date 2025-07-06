@@ -19,24 +19,32 @@ import SearchRow from './components/SearchRow.jsx'
 
 
 function App() {
-      const [selectedDay, setSelectedDay] = useState(null)
-      const [weather, setWeather] = useState(null);
-      const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
-      //const location = "Dublin, Co.Dublin, Ireland";
-      const url = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=Dublin, Co. Dublin&days=10&aqi=no&alerts=no`;
-      
-      // This effect fetches the weather data once the component renders
-      useEffect(() => {
-          fetch(url)
-              .then(res => res.json())
-              .then(data => setWeather(data))
-              .catch(console.error);
-    }, []);
+  // This state holds the location of the weather forecast
+  // It is initialized to Dublin, Co. Dublin, Ireland
+  const [location, setLocation] = useState("Dublin, Co. Dublin, Ireland");
+
+  // This state holds the selected days forecast data
+  const [selectedDay, setSelectedDay] = useState(null)
+
+  // State to hold all the forecast weather data
+  const [weather, setWeather] = useState(null);
+  
+  // apiKey to access the weather API, it is stored in the .env file
+  const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
+  let url = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=Dublin, Co. Dublin&days=10&aqi=no&alerts=no`;
+  
+  // This effect fetches the weather data once the component renders
+  useEffect(() => {
+      fetch(url)
+          .then(res => res.json())
+          .then(data => setWeather(data))
+          .catch(console.error);
+  }, [url]);
   return (
     <div className='flex flex-col items-center justify-center w-full mb-0'>
       <Navbar />
       <SearchRow />
-      <Location location="Dublin, Co.Dublin, Ireland" selectedDay={selectedDay}/>
+      <Location location={location} setLocation={setLocation} selectedDay={selectedDay}/>
       <HourlyForecast />
       <WeatherSection weather={weather} setSelectedDay={setSelectedDay} />
       <Footer />

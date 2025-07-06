@@ -3,7 +3,7 @@
 import LocationMap from "./LocationMap";
 import sunnyAndCloudy from "../assets/sunny-and-cloudy.png";
 
-export default function WeatherSection({ location, selectedDay }) {
+export default function WeatherSection({ location, setLocation, selectedDay }) {
 
     console.log("Selected Day:", selectedDay);
     return (
