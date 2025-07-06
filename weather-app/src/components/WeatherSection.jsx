@@ -14,20 +14,16 @@ export default function WeatherSection({ weatherData }) {
             .then(data => setWeather(data))
             .catch(console.error);
   }, []);
-
     return (
-        <div className="flex flex-row">
-            <DayForecast day="Monday" temperature={20} condition="cloudy"/>
-            <DayForecast day="Tuesday" temperature={12} condition="Storms"/>
-            <DayForecast day="Wednesday" temperature={22} condition="Rain"/>
-            {weather ? (
-                <>
-                    <h2>Weather in {weather.location.name}</h2>
-                    <p>{weather.current.temp_c}°C - {weather.current.condition.text}</p>
-                </>
-            ) : (
-                <p>Loading...</p>
-            )}
+        <div className="flex flex-wrap">
+        {weather
+            ? weather.forecast.forecastday.map((day, ) => (
+                <DayForecast
+                    weatherForecast={day}
+                />
+            ))
+            : <p>Loading...</p>
+        }
         </div>
     );
 }
