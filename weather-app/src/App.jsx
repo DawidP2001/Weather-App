@@ -1,7 +1,6 @@
 /**
  * Things to do:
  * - For the selected day section display more information
- * - Add geolocation to the app
  * - Add a search bar to search for different locations
  * - Add a carousel for the hourly forecast
  * - Add a carousel to select the daily forecast
