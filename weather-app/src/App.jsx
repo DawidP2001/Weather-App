@@ -1,3 +1,14 @@
+/**
+ * Things to do:
+ * - For the selected day section display more information
+ * - Add geolocation to the app
+ * - Add a search bar to search for different locations
+ * - Add a carousel for the hourly forecast
+ * - Add a carousel to select the daily forecast
+ * - Add a way to select the amount of days to forecast
+ * - Add a way to select the unit of measurement (Celsius/Fahrenheit)
+ */
+
 import { useEffect, useState } from "react";
 import './App.css'
 import Navbar from './components/Navbar.jsx'
