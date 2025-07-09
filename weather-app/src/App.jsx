@@ -6,6 +6,8 @@
  * - Add a carousel to select the daily forecast
  * - Add a way to select the amount of days to forecast
  * - Add a way to select the unit of measurement (Celsius/Fahrenheit)
+ * - Add a carousel for the daily forecast
+ * - Add a carousel for the hourly forecast
  */
 
 import { useEffect, useState } from "react";
