@@ -29,22 +29,21 @@ function App() {
   // State to hold all the forecast weather data
   const [weather, setWeather] = useState(null);
   
-  // apiKey to access the weather API, it is stored in the .env file
   const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
-  let url = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=Dublin, Co. Dublin&days=10&aqi=no&alerts=no`;
+  let url = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=10&aqi=no&alerts=no`;
   
   // This effect fetches the weather data once the component renders
   useEffect(() => {
       fetch(url)
           .then(res => res.json())
-          .then(data => setWeather(data))
+          .then(data => {setWeather(data); setSelectedDay(data?.forecast?.forecastday[0]); })
           .catch(console.error);
   }, [url]);
   return (
     <div className='flex flex-col items-center justify-center w-full mb-0'>
       <Navbar />
-      <SearchRow />
-      <Location location={location} setLocation={setLocation} selectedDay={selectedDay}/>
+      <SearchRow setLocation={setLocation}/>
+      <Location location={location} selectedDay={selectedDay}/>
       <HourlyForecast />
       <WeatherSection weather={weather} setSelectedDay={setSelectedDay} />
       <Footer />
