@@ -2,26 +2,82 @@ import React from "react";
 import { Chart } from "react-google-charts";
 
 const data = [
-  ["Year", "Sales"],
-  ["12 AM", 1000],
-  ["1 AM", 1170],
-  ["2 AM", 660],
-  ["3 AM", 1030],
+  ["Time", "Temperature"],
+  ["12 AM", 0],
+  ["1 AM", 0],
+  ["2 AM", 0],
+  ["3 AM", 0],
+  ["4 AM", 0],
+  ["5 AM", 0],
+  ["6 AM", 0],
+  ["7 AM", 0],
+  ["8 AM", 0],
+  ["9 AM", 0],
+  ["10 AM", 0],
+  ["11 AM", 0],
+  ["12 PM", 0],
+  ["1 PM", 0],
+  ["2 PM", 0],
+  ["3 PM", 0],
+  ["4 PM", 0],
+  ["5 PM", 0],
+  ["6 PM", 0],
+  ["7 PM", 0],
+  ["8 PM", 0],
+  ["9 PM", 0],
+  ["10 PM", 0],
+  ["11 PM", 0]
 ];
 
-const options = {
+let options = {
   title: "Todays Temperature",
-  hAxis: { title: "Year", titleTextStyle: { color: "#333" } },
+  hAxis: { title: "Time", titleTextStyle: { color: "#333" } },
   vAxis: { minValue: 0 },
   chartArea: { width: "70%", height: "70%" },
 };
-export default function HourlyForecast() {
+export default function HourlyForecast({weather, selectedDay}) {
+  const [buttonState, setButtonState] = React.useState("Temperature");
+
+  // Temperature
+  if (buttonState === "Temperature") {
+    for (let i = 0; i < 24; i++) {
+      data[i+1][1] = selectedDay?.hour[i]?.temp_c || 0;
+    }
+    options = {
+      title: `${selectedDay?.date} Temperature`,
+      hAxis: { title: "Time", titleTextStyle: { color: "#333" } },
+      vAxis: { minValue: 0, title: "Temperature (°C)" },
+      chartArea: { width: "70%", height: "70%" },
+    }
+    // Percipitation
+  } else if (buttonState === "Percipitation") {
+    for (let i = 0; i < 24; i++) {
+      data[i+1][1] = selectedDay?.hour[i]?.precip_mm || 0;
+    }
+    options = {
+      title: `${selectedDay?.date} Temperature`,
+      hAxis: { title: "Time", titleTextStyle: { color: "#333" } },
+      vAxis: { minValue: 0, title: "Rainfall mm" },
+      chartArea: { width: "70%", height: "70%" },
+    }
+    // Wind Speed 
+  } else if (buttonState === "Wind Speed") {
+    for (let i = 0; i < 24; i++) {
+      data[i+1][1] = selectedDay?.hour[i]?.wind_kph || 0;
+    }
+    options = {
+      title: `${selectedDay?.date} Wind Speed`,
+      hAxis: { title: "Time", titleTextStyle: { color: "#333" } },
+      vAxis: { minValue: 0, title: "Wind Speed kph" },
+      chartArea: { width: "70%", height: "70%" },
+    }
+  }
   return (
     <div>
       <div>
-        <button>Temperature</button>
-        <button>Percipitation</button>
-        <button>Wind Speed</button>
+        <button onClick={() => setButtonState("Temperature")}>Temperature</button>
+        <button onClick={() => setButtonState("Percipitation")}>Percipitation</button>
+        <button onClick={() => setButtonState("Wind Speed")}> Wind Speed</button>
       </div>
       <Chart chartType="AreaChart" data={data} options={options} />
     </div>

@@ -46,7 +46,7 @@ function App() {
       <Navbar />
       <SearchRow setLocation={setLocation}/>
       <Location location={location} selectedDay={selectedDay}/>
-      <HourlyForecast />
+      <HourlyForecast weather={weather} selectedDay={selectedDay}/>
       <WeatherSection weather={weather} setSelectedDay={setSelectedDay} />
       <Footer />
     </div>

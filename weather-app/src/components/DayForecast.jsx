@@ -1,4 +1,4 @@
-import Carousel from "./carousel";
+
 
 // This componenent is responsible for displaying summary for a single day of weather forecast.
 export default function dayForecast({weatherForecast, setSelectedDay}) {
