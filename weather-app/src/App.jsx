@@ -16,7 +16,7 @@ import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
 import WeatherSection from './components/WeatherSection.jsx'
 import Location from './components/Location.jsx'
-import HourlyForecast from './components/HourlyForecast.jsx'  
+ 
 import SearchRow from './components/SearchRow.jsx' 
 
 
@@ -45,8 +45,7 @@ function App() {
     <div className='flex flex-col items-center justify-center w-full mb-0'>
       <Navbar />
       <SearchRow setLocation={setLocation}/>
-      <Location location={location} selectedDay={selectedDay}/>
-      <HourlyForecast weather={weather} selectedDay={selectedDay}/>
+      <Location weather={weather} location={location} selectedDay={selectedDay}/>
       <WeatherSection weather={weather} setSelectedDay={setSelectedDay} />
       <Footer />
     </div>

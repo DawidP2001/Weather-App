@@ -1,17 +1,16 @@
 
-
+import HourlyForecast from './HourlyForecast.jsx' 
 import LocationMap from "./LocationMap";
 
-export default function WeatherSection({ location,selectedDay }) {
-
-    console.log("Selected Day:", selectedDay);
+export default function Location({ weather, location,selectedDay }) {
     return (
-        <div className="flex flex-row justify-around items-center" style={{ width: '100%' }}>
-            <div className="w-50">
-                <div className="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96">
-                    <div className="relative h-56 m-2.5 overflow-hidden text-white rounded-md">
-                        <img className="mx-auto w-full h-full object-cover" src={selectedDay?.day.condition.icon} alt="card-image" />
-                    </div>
+        <div className="flex flex-row justify-around items-center" style={{ width: '100vw' }}>
+            <div className="">
+                <div 
+                    className="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg"
+                    style={{background: "grey", padding: "1rem", width: "25rem"}}
+                >
+                    <img className="" src={selectedDay?.day.condition.icon} alt="card-image" style={{maxWidth: "6rem"}}/>
                     <div className="p-4">
                         <h6 className="mb-2 text-slate-800 text-xl font-semibold">
                             {location}
@@ -21,9 +20,14 @@ export default function WeatherSection({ location,selectedDay }) {
                         <p className="text-black">Total Percipitation: {selectedDay?.day.totalprecip_mm}mm</p>
                         <p className="text-black">Humidity: {selectedDay?.day.avghumidity}%</p>
                     </div>
-                </div>  
+                    <div className="">
+                        <h1 className="text-2xl font-bold text-center mb-4">Hourly Forecast</h1>
+                        <HourlyForecast weather={weather} selectedDay={selectedDay} />
+                    </div>
+                </div>
             </div>
-            <div className="w-50 z-0">
+            
+            <div className="" style={{ minWidth: '25rem', zIndex: 0 }}>
                 <LocationMap  place={location} />
             </div>
         </div>
