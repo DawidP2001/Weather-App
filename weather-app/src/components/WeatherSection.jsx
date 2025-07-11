@@ -12,34 +12,26 @@ import { Pagination } from 'swiper/modules';
 // It maps through the forecast data and renders a DayForecast component for each day
 export default function WeatherSection({ weather, setSelectedDay}) {
     return (
-        <>
-        <div className="flex flex-wrap">
-        {weather
-            ? weather.forecast.forecastday.map((day, ) => (
-                <DayForecast
-                    weatherForecast={day}
-                    setSelectedDay={setSelectedDay}
-                />
-            ))
-            : <p>Loading...</p>
-        }
-        </div>
-        <Swiper
-        slidesPerView={2}
-        spaceBetween={30}
+      <Swiper
+        slidesPerView={5}
+        spaceBetween={16}
         pagination={{
           clickable: true,
         }}
         modules={[Pagination]}
-        className="mySwiper w-full max-w-4xl"
+        className="mySwiper w-full max-w-4xl h-60 bg-gray-500"
       >
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
+        {weather ?
+           weather.forecast.forecastday.map((day, idx) => (
+              <SwiperSlide key={idx}>
+                <DayForecast
+                  weatherForecast={day}
+                  setSelectedDay={setSelectedDay}
+                />
+              </SwiperSlide>
+            ))
+          : <SwiperSlide><p>Loading...</p></SwiperSlide>
+        }
       </Swiper>
-      </>
     );
 }

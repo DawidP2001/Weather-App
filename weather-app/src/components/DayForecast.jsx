@@ -6,9 +6,7 @@ export default function dayForecast({weatherForecast, setSelectedDay}) {
     return (
     <>
         <button onClick={() => setSelectedDay(weatherForecast)} className="m-1 max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-            <a href="#">
-                <img className="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt="" />
-            </a>
+            <img className="rounded-t-lg mx-auto" src={weatherForecast.day.condition.icon} alt="" />
             <div>
                 <p className="whitespace-nowrap overflow-hidden overflow-ellipsis">{weatherForecast.date}</p>
                 <p className="whitespace-nowrap overflow-hidden overflow-ellipsis">{weatherForecast.day.avghumidity}% humidity</p>

@@ -1,7 +1,6 @@
 
 
 import LocationMap from "./LocationMap";
-import sunnyAndCloudy from "../assets/sunny-and-cloudy.png";
 
 export default function WeatherSection({ location,selectedDay }) {
 
@@ -11,7 +10,7 @@ export default function WeatherSection({ location,selectedDay }) {
             <div className="w-50">
                 <div className="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96">
                     <div className="relative h-56 m-2.5 overflow-hidden text-white rounded-md">
-                        <img src={sunnyAndCloudy} alt="card-image" />
+                        <img className="mx-auto w-full h-full object-cover" src={selectedDay?.day.condition.icon} alt="card-image" />
                     </div>
                     <div className="p-4">
                         <h6 className="mb-2 text-slate-800 text-xl font-semibold">
