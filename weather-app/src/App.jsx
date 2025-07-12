@@ -12,13 +12,13 @@
 
 import { useEffect, useState } from "react";
 import './App.css'
-import Navbar from './components/Navbar.jsx'
-import Footer from './components/Footer.jsx'
-import WeatherSection from './components/WeatherSection.jsx'
+import Navbar from './components/Common/Navbar.jsx'
+import Footer from './components/Common/Footer.jsx'
+import WeatherSection from './components/ForecastCarousel.jsx'
 import Location from './components/Location.jsx'
- 
-import SearchRow from './components/SearchRow.jsx' 
-
+import DailyGrid from './components/DailyGrid.jsx'
+import SearchRow from './components/Common/SearchRow.jsx' 
+import TodaysInfo from './components/TodaysInfo.jsx'
 
 function App() {
   // This state holds the location of the weather forecast
@@ -27,7 +27,7 @@ function App() {
 
   // This state holds the selected days forecast data
   const [selectedDay, setSelectedDay] = useState(null)
-
+  console.log("Selected Day: ", selectedDay);
   // State to hold all the forecast weather data
   const [weather, setWeather] = useState(null);
   
@@ -46,7 +46,9 @@ function App() {
       <Navbar />
       <SearchRow setLocation={setLocation}/>
       <Location weather={weather} location={location} selectedDay={selectedDay}/>
+      <TodaysInfo />
       <WeatherSection weather={weather} setSelectedDay={setSelectedDay} />
+      <DailyGrid />
       <Footer />
     </div>
   )

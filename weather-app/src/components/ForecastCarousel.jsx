@@ -10,7 +10,7 @@ import 'swiper/css/pagination';
 import { Pagination } from 'swiper/modules';
 // This component displays the weather forecast for multiple days
 // It maps through the forecast data and renders a DayForecast component for each day
-export default function WeatherSection({ weather, setSelectedDay}) {
+export default function ForecastCarousel({ weather, setSelectedDay}) {
     return (
       <Swiper
         slidesPerView={5}

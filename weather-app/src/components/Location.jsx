@@ -1,5 +1,5 @@
 
-import HourlyForecast from './HourlyForecast.jsx' 
+import HourlyForecast from './HourlyChart.jsx' 
 import LocationMap from "./LocationMap";
 
 export default function Location({ weather, location,selectedDay }) {

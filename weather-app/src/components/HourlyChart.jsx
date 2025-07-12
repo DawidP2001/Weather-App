@@ -35,7 +35,7 @@ let options = {
   vAxis: { minValue: 0 },
   chartArea: { width: "70%", height: "70%" },
 };
-export default function HourlyForecast({weather, selectedDay}) {
+export default function HourlyChart({weather, selectedDay}) {
   const [buttonState, setButtonState] = React.useState("Temperature");
 
   // Temperature
@@ -55,7 +55,7 @@ export default function HourlyForecast({weather, selectedDay}) {
       data[i+1][1] = selectedDay?.hour[i]?.precip_mm || 0;
     }
     options = {
-      title: `${selectedDay?.date} Temperature`,
+      title: `${selectedDay?.date} Percipitation`,
       hAxis: { title: "Time", titleTextStyle: { color: "#333" } },
       vAxis: { minValue: 0, title: "Rainfall mm" },
       chartArea: { width: "70%", height: "70%" },
