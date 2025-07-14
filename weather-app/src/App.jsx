@@ -19,6 +19,7 @@ import Location from './components/Location.jsx'
 import DailyGrid from './components/DailyGrid.jsx'
 import SearchRow from './components/Common/SearchRow.jsx' 
 import TodaysInfo from './components/TodaysInfo.jsx'
+import Card from './components/Common/Card.jsx'
 
 function App() {
   // This state holds the location of the weather forecast
@@ -46,7 +47,7 @@ function App() {
       <Navbar />
       <SearchRow setLocation={setLocation}/>
       <Location weather={weather} location={location} selectedDay={selectedDay}/>
-      <TodaysInfo />
+      <TodaysInfo selectedDay={selectedDay}/>
       <WeatherSection weather={weather} setSelectedDay={setSelectedDay} />
       <DailyGrid />
       <Footer />
