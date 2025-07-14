@@ -1,35 +1,30 @@
 
 import HourlyForecast from './HourlyChart.jsx' 
 import LocationMap from "./LocationMap";
+import Card from './Common/Card.jsx';
 
-export default function Location({ weather, location,selectedDay }) {
+export default function Location({ current, location,selectedDay }) {
+    const currentWeather = <>
+        <img className="m-auto" src={selectedDay?.day.condition.icon} alt="card-image" style={{maxWidth: "6rem"}}/>
+        <div className="p-4">
+            <p className="text-slate-600 leading-normal font-light">{current.condition.text}</p>
+            <p className="text-black">Temperature:{current.temp_c}</p>
+            <p className="text-black">Percipitation: {current.precip_mm}mm</p>
+            <p className="text-black">Humidity: {current.avghumidity}%</p>
+            <p className="text-black">Clouds: {current.cloud}%</p>
+            <p className="text-black">Wind: {current.wind_kph}%</p>
+            <p className="text-black">Wind Direction: {current.wind_dir}%</p>
+        </div>
+    </>;
     return (
-        <div className="flex flex-row justify-around items-center" style={{ width: '100vw' }}>
-            <div className="">
-                <div 
-                    className="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg"
-                    style={{background: "grey", padding: "1rem", width: "25rem"}}
-                >
-                    <img className="" src={selectedDay?.day.condition.icon} alt="card-image" style={{maxWidth: "6rem"}}/>
-                    <div className="p-4">
-                        <h6 className="mb-2 text-slate-800 text-xl font-semibold">
-                            {location}
-                        </h6>
-                        <p className="text-slate-600 leading-normal font-light">{selectedDay?.day.condition.text}</p>
-                        <p className="text-black">Average Temperature:{selectedDay?.day.avgtemp_c}</p>
-                        <p className="text-black">Total Percipitation: {selectedDay?.day.totalprecip_mm}mm</p>
-                        <p className="text-black">Humidity: {selectedDay?.day.avghumidity}%</p>
-                    </div>
-                    <div className="">
-                        <h1 className="text-2xl font-bold text-center mb-4">Hourly Forecast</h1>
-                        <HourlyForecast weather={weather} selectedDay={selectedDay} />
-                    </div>
+        <>
+            <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl text-black">{location}</h1>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <Card>{currentWeather}</Card>
+                <div className="" style={{ minWidth: '25rem', zIndex: 0 }}>
+                    <LocationMap  place={location} />
                 </div>
             </div>
-            
-            <div className="" style={{ minWidth: '25rem', zIndex: 0 }}>
-                <LocationMap  place={location} />
-            </div>
-        </div>
+        </>
     );
 }

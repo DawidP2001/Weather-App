@@ -2,6 +2,7 @@
 // This component displays detailed information about today's weather
 
 import Card from './Common/Card.jsx';
+import HourlyChart from './HourlyChart.jsx';
 
 function DetailedInfo({ title, selectedDay }) {
   const lunarCard = (
@@ -65,6 +66,9 @@ function DetailedInfo({ title, selectedDay }) {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <Card>{lunarCard}</Card>
         <Card>{weatherCard}</Card>
+      </div>
+      <div>
+        <HourlyChart selectedDay={selectedDay} />
       </div>
     </div>
   );

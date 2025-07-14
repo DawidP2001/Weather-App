@@ -28,10 +28,12 @@ function App() {
 
   // This state holds the selected days forecast data
   const [selectedDay, setSelectedDay] = useState(null)
-  console.log("Selected Day: ", selectedDay);
+  
   // State to hold all the forecast weather data
   const [weather, setWeather] = useState(null);
-  
+  if(weather){
+    console.log(weather);
+  }
   const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
   let url = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=10&aqi=no&alerts=no`;
   
@@ -51,7 +53,7 @@ function App() {
     <div className='flex flex-col items-center justify-center w-full mb-0'>
       <Navbar />
       <SearchRow setLocation={setLocation}/>
-      <Location weather={weather} location={location} selectedDay={selectedDay}/>
+      <Location current={weather.current} location={location} selectedDay={selectedDay}/>
       <DetailedInfo title={todaysTitle} selectedDay={weather.forecast.forecastday[0]}/>
       <WeatherSection weather={weather} setSelectedDay={setSelectedDay} />
       <DetailedInfo title={selectedDayTitle} selectedDay={selectedDay}/>

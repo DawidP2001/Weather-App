@@ -35,7 +35,7 @@ let options = {
   vAxis: { minValue: 0 },
   chartArea: { width: "70%", height: "70%" },
 };
-export default function HourlyChart({weather, selectedDay}) {
+export default function HourlyChart({selectedDay}) {
   const [buttonState, setButtonState] = React.useState("Temperature");
 
   // Temperature
@@ -75,9 +75,9 @@ export default function HourlyChart({weather, selectedDay}) {
   return (
     <div>
       <div>
-        <button onClick={() => setButtonState("Temperature")}>Temperature</button>
-        <button onClick={() => setButtonState("Percipitation")}>Percipitation</button>
-        <button onClick={() => setButtonState("Wind Speed")}> Wind Speed</button>
+        <button className="text-white" onClick={() => setButtonState("Temperature")}>Temperature</button>
+        <button className="text-white" onClick={() => setButtonState("Percipitation")}>Percipitation</button>
+        <button className="text-white" onClick={() => setButtonState("Wind Speed")}> Wind Speed</button>
       </div>
       <Chart chartType="AreaChart" data={data} options={options} />
     </div>
