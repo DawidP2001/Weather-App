@@ -42,6 +42,9 @@ function App() {
           .then(data => {setWeather(data); setSelectedDay(data?.forecast?.forecastday[0]); })
           .catch(console.error);
   }, [url]);
+  if (!weather || !selectedDay) {
+    return <div className="loading">Loading...</div>;
+  }
   return (
     <div className='flex flex-col items-center justify-center w-full mb-0'>
       <Navbar />
@@ -49,7 +52,7 @@ function App() {
       <Location weather={weather} location={location} selectedDay={selectedDay}/>
       <TodaysInfo selectedDay={selectedDay}/>
       <WeatherSection weather={weather} setSelectedDay={setSelectedDay} />
-      <DailyGrid />
+      <DailyGrid selectedDay={selectedDay}/>
       <Footer />
     </div>
   )

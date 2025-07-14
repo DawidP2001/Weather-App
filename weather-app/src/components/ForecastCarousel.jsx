@@ -12,6 +12,8 @@ import { Pagination } from 'swiper/modules';
 // It maps through the forecast data and renders a DayForecast component for each day
 export default function ForecastCarousel({ weather, setSelectedDay}) {
     return (
+    <>
+      <h1>Select A Day</h1>
       <Swiper
         slidesPerView={5}
         spaceBetween={16}
@@ -33,5 +35,6 @@ export default function ForecastCarousel({ weather, setSelectedDay}) {
           : <SwiperSlide><p>Loading...</p></SwiperSlide>
         }
       </Swiper>
+    </>
     );
 }

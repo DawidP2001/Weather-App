@@ -3,7 +3,7 @@
 
 import Card from './Common/Card.jsx';
 
-function TodaysInfo({selectedDay}) {
+function TodaysInfo({selectedDay}) {  
   const lunarCard = <>
     <h3>Astro</h3>
     <p>Is Sun Currently Up: {selectedDay.astro.is_sun_up}</p>
