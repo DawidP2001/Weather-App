@@ -18,7 +18,7 @@ import WeatherSection from './components/ForecastCarousel.jsx'
 import Location from './components/Location.jsx'
 import DailyGrid from './components/DailyGrid.jsx'
 import SearchRow from './components/Common/SearchRow.jsx' 
-import TodaysInfo from './components/TodaysInfo.jsx'
+import DetailedInfo from './components/DetailedInfo.jsx'
 import Card from './components/Common/Card.jsx'
 
 function App() {
@@ -45,13 +45,16 @@ function App() {
   if (!weather || !selectedDay) {
     return <div className="loading">Loading...</div>;
   }
+  const todaysTitle = `Today's Weather Information`;
+  const selectedDayTitle = `Selected Day: ${selectedDay.date} Weather Information`;
   return (
     <div className='flex flex-col items-center justify-center w-full mb-0'>
       <Navbar />
       <SearchRow setLocation={setLocation}/>
       <Location weather={weather} location={location} selectedDay={selectedDay}/>
-      <TodaysInfo selectedDay={selectedDay}/>
+      <DetailedInfo title={todaysTitle} selectedDay={weather.forecast.forecastday[0]}/>
       <WeatherSection weather={weather} setSelectedDay={setSelectedDay} />
+      <DetailedInfo title={selectedDayTitle} selectedDay={selectedDay}/>
       <DailyGrid selectedDay={selectedDay}/>
       <Footer />
     </div>
