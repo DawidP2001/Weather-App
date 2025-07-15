@@ -1,11 +1,19 @@
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import { useEffect, useState } from "react";
 import 'leaflet/dist/leaflet.css';
 
-export default function LocationMap({place}) {
+function MapFocus({ cords }) {
+  const map = useMap();
+  useEffect(() => {
+    map.setView(cords, map.getZoom(), { animate: true });
+  }, [cords, map]);
+  return null;
+}
+
+export default function LocationMap({ place }) {
   const [cords, setCords] = useState([53.349805, -6.26031]);
 
-    useEffect(() => {
+  useEffect(() => {
     const fetchCoords = async () => {
       try {
         const response = await fetch(
@@ -22,9 +30,11 @@ export default function LocationMap({place}) {
 
     fetchCoords();
   }, [place]);
+
   return (
     <div className='z-1'>
-      <MapContainer center={[51.505, -0.09]} zoom={13} style={{ height: "400px", width: "100%", zindex: 0 }}>
+      <MapContainer center={cords} zoom={13} style={{ height: "400px", width: "100%", zIndex: 0 }}>
+        <MapFocus cords={cords} />
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />

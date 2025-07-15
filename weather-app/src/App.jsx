@@ -53,7 +53,7 @@ function App() {
     <div className='flex flex-col items-center justify-center w-full mb-0'>
       <Navbar />
       <SearchRow setLocation={setLocation}/>
-      <Location current={weather.current} location={location} selectedDay={selectedDay}/>
+      <Location weather={weather} current={weather.current} location={location} selectedDay={selectedDay}/>
       <DetailedInfo title={todaysTitle} selectedDay={weather.forecast.forecastday[0]}/>
       <WeatherSection weather={weather} setSelectedDay={setSelectedDay} />
       <DetailedInfo title={selectedDayTitle} selectedDay={selectedDay}/>
