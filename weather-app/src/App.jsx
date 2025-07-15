@@ -47,14 +47,12 @@ function App() {
   if (!weather || !selectedDay) {
     return <div className="loading">Loading...</div>;
   }
-  const todaysTitle = `Today's Weather Information`;
   const selectedDayTitle = `Selected Day: ${selectedDay.date} Weather Information`;
   return (
     <div className='flex flex-col items-center justify-center w-full mb-0'>
-      <Navbar />
-      <SearchRow setLocation={setLocation}/>
+      <Navbar setLocation={setLocation}/>
+      <div className="m-15"></div>
       <Location weather={weather} current={weather.current} location={location} selectedDay={selectedDay}/>
-      <DetailedInfo title={todaysTitle} selectedDay={weather.forecast.forecastday[0]}/>
       <WeatherSection weather={weather} setSelectedDay={setSelectedDay} />
       <DetailedInfo title={selectedDayTitle} selectedDay={selectedDay}/>
       <DailyGrid selectedDay={selectedDay}/>
