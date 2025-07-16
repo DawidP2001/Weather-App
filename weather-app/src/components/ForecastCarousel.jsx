@@ -14,7 +14,6 @@ import 'swiper/css/pagination';
 export default function ForecastCarousel({ weather, setSelectedDay}) {
     return (
     <>
-      <h1>Select A Day</h1>
       <Swiper
         slidesPerView={5}
         spaceBetween={16}
