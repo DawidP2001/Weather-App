@@ -2,12 +2,12 @@ import DayForecast from "./DayForecast.jsx";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Card from "./Common/Card.jsx";
+import { Navigation } from 'swiper/modules';
 
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
-
-// import required modules
+import 'swiper/css/navigation';
 
 // This component displays the weather forecast for multiple days
 // It maps through the forecast data and renders a DayForecast component for each day
@@ -17,11 +17,9 @@ export default function ForecastCarousel({ weather, setSelectedDay}) {
       <Swiper
         slidesPerView={5}
         spaceBetween={16}
-        pagination={{
-          clickable: true,
-        }}
-        
-        className="mySwiper w-full max-w-4xl bg-gray-300"
+        navigation={true}
+        modules={[Navigation]}
+        className="mySwiper m-5 w-full max-w-4xl mx-auto bg-gray-200 overflow-hidden p-4 bg-white shadow-lg rounded-lg"
       >
         {weather ?
            weather.forecast.forecastday.map((day, idx) => (

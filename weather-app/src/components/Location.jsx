@@ -25,7 +25,7 @@ export default function Location({ weather, current, location, selectedDay }) {
         <>
             <h1 className="mb-4 text-4xl leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl text-black">{location}</h1>
             <h2 className='ms-2 text-gray-700 text-1xl md:text-2xl'>{weather.location.localtime}</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 mb-20">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-5">
                 <Card>{currentWeather}</Card>
                 <div className="" style={{ minWidth: '25rem', zIndex: 0 }}>
                     <LocationMap  place={location} />

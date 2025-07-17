@@ -40,6 +40,7 @@ export default function HourlyChart({selectedDay}) {
 
   // Temperature
   if (buttonState === "Temperature") {
+    data[0][1] = "Temperature";
     for (let i = 0; i < 24; i++) {
       data[i+1][1] = selectedDay?.hour[i]?.temp_c || 0;
     }
@@ -51,6 +52,7 @@ export default function HourlyChart({selectedDay}) {
     }
     // Percipitation
   } else if (buttonState === "Percipitation") {
+    data[0][1] = "Percipitation";
     for (let i = 0; i < 24; i++) {
       data[i+1][1] = selectedDay?.hour[i]?.precip_mm || 0;
     }
@@ -62,6 +64,7 @@ export default function HourlyChart({selectedDay}) {
     }
     // Wind Speed 
   } else if (buttonState === "Wind Speed") {
+    data[0][1] = "Wind Speed";
     for (let i = 0; i < 24; i++) {
       data[i+1][1] = selectedDay?.hour[i]?.wind_kph || 0;
     }
@@ -74,12 +77,12 @@ export default function HourlyChart({selectedDay}) {
   }
   return (
     <div>
-      <div>
-        <button className="text-white" onClick={() => setButtonState("Temperature")}>Temperature</button>
-        <button className="text-white" onClick={() => setButtonState("Percipitation")}>Percipitation</button>
-        <button className="text-white" onClick={() => setButtonState("Wind Speed")}> Wind Speed</button>
-      </div>
       <Chart chartType="AreaChart" data={data} options={options} />
+      <div>
+        <button className="chart-button text-white" onClick={() => setButtonState("Temperature")}>Temperature</button>
+        <button className="chart-button text-white" onClick={() => setButtonState("Percipitation")}>Percipitation</button>
+        <button className="chart-button text-white" onClick={() => setButtonState("Wind Speed")}> Wind Speed</button>
+      </div>
     </div>
   );
 }

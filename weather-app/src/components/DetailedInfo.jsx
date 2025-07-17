@@ -42,14 +42,16 @@ function DetailedInfo({ title, selectedDay }) {
   );
 
   return (
-    <div className="todays-info">
-      <h2 className="text-2xl font-bold mb-4">{title}</h2>
-      <p className="text-lg">Here you can display more detailed information about the selected day's weather.</p>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <Card>{lunarCard}</Card>
-        <Card>{weatherCard}</Card>
+    <div className="todays-info mx-auto">
+      <div className='bg-white shadow-lg rounded-lg mx-auto'>
+        <h2 className="text-2xl font-bold mb-4">{title}</h2>
+        <p className="text-lg">Here you can display more detailed information about the selected day's weather.</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <Card>{lunarCard}</Card>
+          <Card>{weatherCard}</Card>
+        </div>
       </div>
-      <div>
+      <div className='p-4 m-5 bg-white shadow-lg rounded-lg'>
         <HourlyChart selectedDay={selectedDay} />
       </div>
     </div>

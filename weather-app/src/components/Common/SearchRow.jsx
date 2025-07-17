@@ -26,14 +26,14 @@ export default function SearchRow({setLocation}) {
                         id="default-search"
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
-                        className="min-h-10 block w-full p-4 ps-10 text-sm text-black border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500s dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+                        className="min-h-10 block w-full p-2 ps-10 text-sm text-black border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500s dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" 
                         placeholder="Enter location here" 
                         required 
                     />
                     <button 
                         type="submit" 
                         className="text-white absolute end-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                        style={{ padding: "0.25rem 1rem", bottom: "0.25rem" }}
+                        style={{ padding: "0.25rem 1rem", bottom: "0.4rem" }}
                     >Search</button>
                 </div>
             </form>

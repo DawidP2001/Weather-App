@@ -20,6 +20,8 @@ import DailyGrid from './components/DailyGrid.jsx'
 import SearchRow from './components/Common/SearchRow.jsx' 
 import DetailedInfo from './components/DetailedInfo.jsx'
 import Card from './components/Common/Card.jsx'
+import AdsColumn from "./components/Common/AdsColumn.jsx";
+import AdsRow from "./components/Common/AdsRow.jsx";
 
 function App() {
   // This state holds the location of the weather forecast
@@ -52,10 +54,23 @@ function App() {
     <div className='flex flex-col items-center justify-center w-full mb-0'>
       <Navbar setLocation={setLocation}/>
       <div className="m-15"></div>
-      <Location weather={weather} current={weather.current} location={location} selectedDay={selectedDay}/>
-      <WeatherSection weather={weather} setSelectedDay={setSelectedDay} />
-      <DetailedInfo title={selectedDayTitle} selectedDay={selectedDay}/>
-      <DailyGrid selectedDay={selectedDay}/>
+      <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-6xl mx-auto p-4">
+        <AdsColumn>
+          <h1>Ads</h1>
+        </AdsColumn>
+        <div>
+          <Location weather={weather} current={weather.current} location={location} selectedDay={selectedDay}/>
+          <WeatherSection weather={weather} setSelectedDay={setSelectedDay} />
+          <DetailedInfo title={selectedDayTitle} selectedDay={selectedDay}/>
+          <DailyGrid selectedDay={selectedDay}/>
+          <AdsRow>
+            <h1>Hello</h1>
+          </AdsRow>
+        </div>
+        <AdsColumn>
+          <h1>Ads</h1>
+        </AdsColumn>
+      </div>
       <Footer />
     </div>
   )

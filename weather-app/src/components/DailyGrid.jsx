@@ -17,9 +17,9 @@ for (let i = 0; i < selectedDay?.hour?.length; i++) {
 }
     return (
         <>
-            <div class="relative overflow-x-auto shadow-md sm:rounded-lg m-10">
+            <div class="bg-white shadow-lg rounded-lg relative overflow-x-auto shadow-md sm:rounded-lg m-10">
                 <table class="w-full text-sm text-left rtl:text-right text-gray-500">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-200">
                         <tr>
                             <th scope="col" class="px-6 py-3">
                                 Hour

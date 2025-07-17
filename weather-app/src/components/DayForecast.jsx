@@ -8,7 +8,7 @@ export default function dayForecast({weatherForecast, setSelectedDay}) {
     return (
         <button
             onClick={() => setSelectedDay(weatherForecast)}
-            className="w-full bg-white border border-solid border-red-950 hover:border-blue-500 hover:bg-blue-100 rounded-lg shadow-md p-3 flex flex-col items-center justify-center transition duration-300 transform hover:scale-105"  
+            className="mx-2 my-2 w-full bg-white border border-solid border-gray-400 hover:border-gray-900 hover:bg-blue-100 rounded-lg shadow-md p-3 flex flex-col items-center justify-center transition duration-300 transform hover:scale-101"  
         >
             <h3 className="text-lg font-semibold text-gray-800">{dayOfWeek}</h3>
             <p className="text-gray-600">{format(date, 'dd MMMM')}</p>
