@@ -22,6 +22,7 @@ import DetailedInfo from './components/DetailedInfo.jsx'
 import Card from './components/Common/Card.jsx'
 import AdsColumn from "./components/Common/AdsColumn.jsx";
 import AdsRow from "./components/Common/AdsRow.jsx";
+import HourlyChart from "./components/HourlyChart.jsx";
 
 function App() {
   // This state holds the location of the weather forecast
@@ -62,6 +63,7 @@ function App() {
           <Location weather={weather} current={weather.current} location={location} selectedDay={selectedDay}/>
           <WeatherSection weather={weather} setSelectedDay={setSelectedDay} />
           <DetailedInfo title={selectedDayTitle} selectedDay={selectedDay}/>
+          <HourlyChart selectedDay={selectedDay} />
           <DailyGrid selectedDay={selectedDay}/>
           <AdsRow>
             <h1>Hello</h1>

@@ -51,9 +51,6 @@ function DetailedInfo({ title, selectedDay }) {
           <Card>{weatherCard}</Card>
         </div>
       </div>
-      <div className='p-4 m-5 bg-white shadow-lg rounded-lg'>
-        <HourlyChart selectedDay={selectedDay} />
-      </div>
     </div>
   );
 }

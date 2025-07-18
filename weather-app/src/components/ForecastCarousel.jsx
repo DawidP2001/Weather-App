@@ -30,8 +30,19 @@ export default function ForecastCarousel({ weather, setSelectedDay}) {
                   />
               </SwiperSlide>
             ))
+            
           : <SwiperSlide><p>Loading...</p></SwiperSlide>
         }
+        {Array(6).fill().map((_, index) => (
+          <SwiperSlide key={`disabled-${index}`}>
+            <DayForecast
+              className="blur bg-gray-600"
+              weatherForecast={weather.forecast.forecastday[0]}
+              setSelectedDay={setSelectedDay}
+              disabled={true}
+            />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </>
     );

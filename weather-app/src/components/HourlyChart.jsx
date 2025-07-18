@@ -76,7 +76,7 @@ export default function HourlyChart({selectedDay}) {
     }
   }
   return (
-    <div>
+    <div className="p-4 m-5 bg-white shadow-lg rounded-lg">
       <Chart chartType="AreaChart" data={data} options={options} />
       <div>
         <button className="chart-button text-white" onClick={() => setButtonState("Temperature")}>Temperature</button>
