@@ -23,6 +23,17 @@ import Card from './components/Common/Card.jsx'
 import AdsColumn from "./components/Common/AdsColumn.jsx";
 import AdsRow from "./components/Common/AdsRow.jsx";
 import HourlyChart from "./components/HourlyChart.jsx";
+import Ad from "./components/Common/Ad.jsx";
+
+import ad1 from './assets/Ads/Ad1.jpg';
+import ad2 from './assets/Ads/Ad2.jpg';
+import ad3 from './assets/Ads/Ad3.jpg'; 
+import ad4 from './assets/Ads/Ad4.jpg';
+import ad5 from './assets/Ads/Ad5.jpg';
+import ad6 from './assets/Ads/Ad6.jpg';
+import ad7 from './assets/Ads/Ad7.jpg';
+import ad8 from './assets/Ads/Ad8.jpg';
+import ad9 from './assets/Ads/Ad9.jpg';
 
 function App() {
   // This state holds the location of the weather forecast
@@ -55,22 +66,28 @@ function App() {
     <div className='flex flex-col items-center justify-center w-full mb-0'>
       <Navbar setLocation={setLocation}/>
       <div className="m-15"></div>
-      <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-6xl mx-auto p-4">
-        <AdsColumn>
-          <h1>Ads</h1>
-        </AdsColumn>
+      <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-6xl mx-auto p-4 h-full">
         <div>
           <Location weather={weather} current={weather.current} location={location} selectedDay={selectedDay}/>
           <WeatherSection weather={weather} setSelectedDay={setSelectedDay} />
           <DetailedInfo title={selectedDayTitle} selectedDay={selectedDay}/>
           <HourlyChart selectedDay={selectedDay} />
           <DailyGrid selectedDay={selectedDay}/>
-          <AdsRow>
-            <h1>Hello</h1>
-          </AdsRow>
         </div>
         <AdsColumn>
-          <h1>Ads</h1>
+          <Ad image={ad1}/>
+          <Ad image={ad2}/>
+          <Ad image={ad3}/>
+          <Ad image={ad4}/>
+          <Ad image={ad5}/>
+          <Ad image={ad6}/>
+          <Ad image={ad7}/>
+          <Ad image={ad8}/>
+          <Ad image={ad9}/>
+          <Ad image={ad1}/>
+          <Ad image={ad2}/>
+          <Ad image={ad3}/>
+          <Ad image={ad4}/>
         </AdsColumn>
       </div>
       <Footer />
