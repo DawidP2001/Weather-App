@@ -1,13 +1,11 @@
 /**
  * Things to do:
- * - For the selected day section display more information
- * - Add a search bar to search for different locations
- * - Add a carousel for the hourly forecast
- * - Add a carousel to select the daily forecast
- * - Add a way to select the amount of days to forecast
  * - Add a way to select the unit of measurement (Celsius/Fahrenheit)
- * - Add a carousel for the daily forecast
- * - Add a carousel for the hourly forecast
+ * - Add a way to select the unit of measurement for distance (Kilometers/Miles)
+ * - Add a way make a modal when you click on the premium section
+ * - Add a redirect to my website when you click on an ad
+ * - Add more information to the footer for contact and about us
+ * - Add a way to change the theme of the app (light/dark mode)
  */
 
 import { useEffect, useState } from "react";
