@@ -36,6 +36,14 @@ import ad8 from './assets/Ads/Ad8.jpg';
 import ad9 from './assets/Ads/Ad9.jpg';
 
 function App() {
+  // This state holds the unit of measurement for temperature
+  // It is initialized to Celsius
+  const [isCelsius, setIsCelsius] = useState(true); 
+
+  // This state holds the unit of measurement for distance
+  // It is initialized to kilometers
+  const [isKilometers, setIsKilometers] = useState(true);
+
   // This state holds the location of the weather forecast
   // It is initialized to Dublin, Co. Dublin, Ireland
   const [location, setLocation] = useState("Dublin, Co. Dublin, Ireland");
@@ -58,6 +66,7 @@ function App() {
           .then(data => {setWeather(data); setSelectedDay(data?.forecast?.forecastday[0]); })
           .catch(console.error);
   }, [url]);
+  // If weather data is not available or selected day is not set, show a loading message
   if (!weather || !selectedDay) {
     return <div className="loading">Loading...</div>;
   }
