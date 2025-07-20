@@ -5,7 +5,7 @@ import Card from './Common/Card.jsx';
 import HourlyChart from './HourlyChart.jsx';
 import CardKeyValuePair from './Common/CardKeyValuePair.jsx';
 
-function DetailedInfo({ title, selectedDay }) {
+function DetailedInfo({ title, selectedDay, tempUnit, distUnit }) {
   const lunarCard = (
     <div className="space-y-2">
       <h3 className="text-xl font-semibold mb-2 border-b pb-1">Astro</h3>
@@ -21,21 +21,22 @@ function DetailedInfo({ title, selectedDay }) {
       </div>
     </div>
   );
-
+  // There isn't a value for snow in the API, so we calculate it from cm to inches
+  const snowInches = selectedDay.day.totalsnow_cm/2.54;
   const weatherCard = (
     <div className="space-y-2">
       <h3 className="text-xl font-semibold mb-2 border-b pb-1">Weather</h3>
       <div className="grid grid-cols-1 gap-y-1 text-sm">
-        <CardKeyValuePair label="Average Humidity" value={selectedDay.day.avghumidity} />
-        <CardKeyValuePair label="Average Temperature" value={selectedDay.day.avgtemp_c} />
-        <CardKeyValuePair label="Average Visibility" value={selectedDay.day.avgvis_km} />
-        <CardKeyValuePair label="Chance of Rain" value={selectedDay.day.daily_chance_of_rain} />
-        <CardKeyValuePair label="Chance of Snow" value={selectedDay.day.daily_chance_of_snow} />
-        <CardKeyValuePair label="Maximum Temperature" value={selectedDay.day.maxtemp_c} />
-        <CardKeyValuePair label="Maximum Wind Speed" value={selectedDay.day.maxwind_kph} />
-        <CardKeyValuePair label="Minimum Temperature" value={selectedDay.day.mintemp_c} />
-        <CardKeyValuePair label="Total Percipitation" value={selectedDay.day.totalprecip_mm} />
-        <CardKeyValuePair label="Total Snow" value={selectedDay.day.totalsnow_cm} />
+        <CardKeyValuePair label="Average Humidity" value={`${selectedDay.day.avghumidity} %`} />
+        <CardKeyValuePair label="Average Temperature" value={`${tempUnit === "C" ? selectedDay.day.avgtemp_c : selectedDay.day.avgtemp_f}°${tempUnit}`} />
+        <CardKeyValuePair label="Average Visibility" value={`${distUnit === "km" ? selectedDay.day.avgvis_km : selectedDay.day.avgvis_miles} ${distUnit}`} />
+        <CardKeyValuePair label="Chance of Rain" value={`${selectedDay.day.daily_chance_of_rain} %`} />
+        <CardKeyValuePair label="Chance of Snow" value={`${selectedDay.day.daily_chance_of_snow} %`} />
+        <CardKeyValuePair label="Maximum Temperature" value={`${tempUnit === "C" ? selectedDay.day.maxtemp_c : selectedDay.day.maxtemp_f}°${tempUnit}`} />
+        <CardKeyValuePair label="Maximum Wind Speed" value={`${distUnit === "km" ? selectedDay.day.maxwind_kph : selectedDay.day.maxwind_mph} ${distUnit === "km" ? "km/h" : "mph"}`} />
+        <CardKeyValuePair label="Minimum Temperature" value={`${tempUnit === "C" ? selectedDay.day.mintemp_c : selectedDay.day.mintemp_f}°${tempUnit}`} />
+        <CardKeyValuePair label="Total Percipitation" value={`${distUnit === "km" ? selectedDay.day.totalprecip_mm : selectedDay.day.totalprecip_in} ${distUnit === "km" ? "mm" : "inches"}`} />
+        <CardKeyValuePair label="Total Snow" value={`${distUnit === "km" ? snowInches : selectedDay.day.totalsnow_cm} ${distUnit === "km" ? "inches" : "cm"}`} />
         <CardKeyValuePair label="UV Index" value={selectedDay.day.uv} />
       </div>
     </div>

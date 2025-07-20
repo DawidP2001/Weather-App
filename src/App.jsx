@@ -77,7 +77,7 @@ function App() {
         <div>
           <Location weather={weather} current={weather.current} location={location} selectedDay={selectedDay} tempUnit={tempUnit} distUnit={distUnit} />
           <WeatherSection weather={weather} setSelectedDay={setSelectedDay} />
-          <DetailedInfo title={selectedDayTitle} selectedDay={selectedDay}/>
+          <DetailedInfo title={selectedDayTitle} selectedDay={selectedDay} tempUnit={tempUnit} distUnit={distUnit}/>
           <HourlyChart selectedDay={selectedDay} />
           <DailyGrid selectedDay={selectedDay}/>
         </div>
