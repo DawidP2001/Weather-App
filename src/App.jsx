@@ -36,11 +36,11 @@ import ad9 from './assets/Ads/Ad9.jpg';
 function App() {
   // This state holds the unit of measurement for temperature
   // It is initialized to Celsius
-  const [isCelsius, setIsCelsius] = useState(true); 
+  const [tempUnit, setTempUnit] = useState("C"); 
 
   // This state holds the unit of measurement for distance
   // It is initialized to kilometers
-  const [isKilometers, setIsKilometers] = useState(true);
+  const [distUnit, setDistUnit] = useState("km");
 
   // This state holds the location of the weather forecast
   // It is initialized to Dublin, Co. Dublin, Ireland
@@ -71,11 +71,11 @@ function App() {
   const selectedDayTitle = `Selected Day: ${selectedDay.date} Weather Information`;
   return (
     <div className='flex flex-col items-center justify-center w-full mb-0'>
-      <Navbar setLocation={setLocation}/>
+      <Navbar setLocation={setLocation} setTempUnit={setTempUnit} setDistUnit={setDistUnit} />
       <div className="m-15"></div>
       <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-6xl mx-auto p-4 h-full">
         <div>
-          <Location weather={weather} current={weather.current} location={location} selectedDay={selectedDay}/>
+          <Location weather={weather} current={weather.current} location={location} selectedDay={selectedDay} tempUnit={tempUnit} distUnit={distUnit} />
           <WeatherSection weather={weather} setSelectedDay={setSelectedDay} />
           <DetailedInfo title={selectedDayTitle} selectedDay={selectedDay}/>
           <HourlyChart selectedDay={selectedDay} />

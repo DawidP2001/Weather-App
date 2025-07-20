@@ -1,6 +1,7 @@
 import { useState } from "react";
 
-export default function SearchRow({setLocation}) {
+// Function component for the search bar and unit toggles
+export default function SearchRow({setLocation, className, setShowLogo, showLogo, setTempUnit, setDistUnit}) {
     const [input, setInput] = useState("");
     const [isOpen, setIsOpen] = useState(false);
     console.log(isOpen);
@@ -11,7 +12,20 @@ export default function SearchRow({setLocation}) {
 
     return (
         <>
-            <div className="block md:hidden">
+            {/* Mobile */}
+            <div className={`flex md:hidden ${className} justify-self-end gap-2`}>
+                {/* Search button */}
+                <button 
+                    type="button" 
+                    onClick={() => setShowLogo(!showLogo)}
+                    className="inline-flex items-center justify-center p-2 w-10 h-10 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                >
+                <span className="sr-only">Search</span>
+                <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                </svg>
+                </button>
+                {/* Burger button */}
                 <button 
                     type="button" 
                     onClick={() => setIsOpen(!isOpen)} 
@@ -24,8 +38,8 @@ export default function SearchRow({setLocation}) {
                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15"/>
                 </svg>
                 </button>
-                <div className={`w-full ${isOpen ? "absolute" : "hidden"} `} id="navbar-hamburger">
-                <ul className="flex flex-col font-medium mt-4 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+                <div className={`w-full `} id="navbar-hamburger">
+                <ul className={`${isOpen ? "absolute" : "hidden"} right-2 top-10 flex flex-col font-medium mt-4 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700`}>
                     <li>
                     <a href="#" className="block py-2 px-3 text-white bg-blue-700 rounded-sm dark:bg-blue-600" aria-current="page">Home</a>
                     </li>
@@ -41,7 +55,10 @@ export default function SearchRow({setLocation}) {
                 </ul>
                 </div>
             </div>
-            <div className="flex md:w-100 hidden md:flex" >   
+
+            {/* Desktop */}
+            <div className={`flex md:w-100 hidden md:flex ${className}`}>   
+                {/* Search bar */}
                 <form 
                     className="max-w-md mx-auto min-w-100" 
                     onSubmit={handleSubmit}
@@ -69,23 +86,36 @@ export default function SearchRow({setLocation}) {
                         >Search</button>
                     </div>
                 </form>
+                {/* Unit toggles */}
+                {/* Temperature unit toggle */}
                 <div className="inline-flex items-center gap-2 mx-10 font-bold">
-                    <label htmlFor="switch-component-on" className="text-slate-600 text-sm cursor-pointer">C</label>
+                    <label htmlFor="Temperature-component-on" className="text-slate-600 text-sm cursor-pointer">C</label>
                     <div className="relative inline-block w-11 h-5">
-                        <input id="switch-component-on" type="checkbox" className="peer appearance-none w-11 h-5 bg-gray-300 rounded-full checked:bg-gray-800 cursor-pointer transition-colors duration-300" />
-                        <label htmlFor="switch-component-on" className="absolute top-0 left-0 w-5 h-5 bg-white rounded-full border border-slate-300 shadow-sm transition-transform duration-300 peer-checked:translate-x-6 peer-checked:border-slate-800 cursor-pointer">
+                        <input 
+                            id="Temperature-component-on" 
+                            type="checkbox" 
+                            onChange={(e) => setTempUnit(e.target.checked ? "F" : "C")}
+                            className="peer appearance-none w-11 h-5 bg-gray-300 rounded-full checked:bg-gray-800 cursor-pointer transition-colors duration-300" 
+                        />
+                        <label htmlFor="Temperature-component-on" className="absolute top-0 left-0 w-5 h-5 bg-white rounded-full border border-slate-300 shadow-sm transition-transform duration-300 peer-checked:translate-x-6 peer-checked:border-slate-800 cursor-pointer">
                         </label>
                     </div>
-                    <label htmlFor="switch-component-on" className="text-slate-600 text-sm cursor-pointer">F</label>
+                    <label htmlFor="Temperature-component-on" className="text-slate-600 text-sm cursor-pointer">F</label>
                 </div>
+                {/* Distance unit toggle */}
                 <div className="inline-flex items-center gap-2 font-bold">
-                    <label htmlFor="switch-component-on" className="text-slate-600 text-sm cursor-pointer">Km</label>
+                    <label htmlFor="Distance-component-on" className="text-slate-600 text-sm cursor-pointer">Km</label>
                     <div className="relative inline-block w-11 h-5">
-                        <input id="switch-component-on" type="checkbox" className="peer appearance-none w-11 h-5 bg-gray-300 rounded-full checked:bg-slate-800 cursor-pointer transition-colors duration-300" />
-                        <label htmlFor="switch-component-on" className="absolute top-0 left-0 w-5 h-5 bg-white rounded-full border border-slate-300 shadow-sm transition-transform duration-300 peer-checked:translate-x-6 peer-checked:border-slate-800 cursor-pointer">
+                        <input 
+                            id="Distance-component-on" 
+                            type="checkbox" 
+                            onChange={(e) => setDistUnit(e.target.checked ? "mi" : "km")}
+                            className="peer appearance-none w-11 h-5 bg-gray-300 rounded-full checked:bg-slate-800 cursor-pointer transition-colors duration-300" 
+                        />
+                        <label htmlFor="Distance-component-on" className="absolute top-0 left-0 w-5 h-5 bg-white rounded-full border border-slate-300 shadow-sm transition-transform duration-300 peer-checked:translate-x-6 peer-checked:border-slate-800 cursor-pointer">
                         </label>
                     </div>
-                    <label htmlFor="switch-component-on" className="text-slate-600 text-sm cursor-pointer">M</label>
+                    <label htmlFor="Distance-component-on" className="text-slate-600 text-sm cursor-pointer">M</label>
                 </div>
             </div>
         </>
