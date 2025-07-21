@@ -32,7 +32,7 @@ export default function Location({ weather, current, location, selectedDay, temp
             <h2 className='ms-2 text-gray-700 text-1xl md:text-2xl'>{weather.location.localtime}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-5">
                 <Card>{currentWeather}</Card>
-                <div className="w-full md:min-w-96" style={{ zIndex: 0 }}>
+                <div className="md:min-w-96" style={{ zIndex: 0 }}>
                     <LocationMap  place={location} />
                 </div>
             </div>

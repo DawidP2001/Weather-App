@@ -19,7 +19,7 @@ export default function ForecastCarousel({ weather, setSelectedDay}) {
         spaceBetween={16}
         navigation={true}
         modules={[Navigation]}
-        className="mySwiper m-5 w-full max-w-4xl mx-auto bg-gray-200 overflow-hidden p-4 bg-white shadow-lg rounded-lg"
+        className="mySwiper m-5 w-full max-w-4xl mx-auto bg-gray-200 overflow-hidden md:p-4 bg-white shadow-lg rounded-lg"
       >
         {weather ?
            weather.forecast.forecastday.map((day, idx) => (

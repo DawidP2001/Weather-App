@@ -33,7 +33,11 @@ export default function LocationMap({ place }) {
 
   return (
     <div className='z-1'>
-      <MapContainer center={cords} zoom={13} style={{ height: "400px", width: "100%", zIndex: 0 }}>
+      <MapContainer 
+        center={cords} 
+        zoom={13} 
+        className="rounded-lg shadow-lg"
+      >
         <MapFocus cords={cords} />
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
