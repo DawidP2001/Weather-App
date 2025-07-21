@@ -11,7 +11,7 @@ export default function Location({ weather, current, location, selectedDay, temp
             <div className="font-medium text-right">Feels Like:</div>
             <div className="text-left pl-4">{tempUnit=="C" ? current.feelslike_c : current.feelslike_f}°{tempUnit}</div>
             <div className="font-medium text-right">Precipitation:</div>
-            <div className="text-left pl-4">{current.precip_mm}mm</div>
+            <div className="text-left pl-4">{distUnit === "km" ? current.precip_mm : current.precip_in} {distUnit === "km" ? "mm" : "inches"}</div>
             <div className="font-medium text-right">Humidity:</div>
             <div className="text-left pl-4">{current.humidity}%</div>
             <div className="font-medium text-right">Clouds:</div>
