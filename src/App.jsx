@@ -69,9 +69,12 @@ function App() {
   }
   const selectedDayTitle = `Selected Day: ${selectedDay.date} Weather Information`;
   return (
-    <div className='flex flex-col items-center justify-center w-full mb-0'>
+    <div 
+      className='flex flex-col items-center justify-center w-full mb-0 overflow-x-hidden'
+      style={{maxWidth: "100vw", overflowX: "hidden"}}
+    >
       <Navbar setLocation={setLocation} setTempUnit={setTempUnit} setDistUnit={setDistUnit} />
-      <div className="m-15"></div>
+      <div className="mt-20"></div>
       <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-6xl mx-auto p-4 h-full">
         <div>
           <Location weather={weather} current={weather.current} location={location} selectedDay={selectedDay} tempUnit={tempUnit} distUnit={distUnit} />
