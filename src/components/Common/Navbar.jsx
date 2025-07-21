@@ -7,7 +7,7 @@ const [showLogo, setShowLogo] = useState(true);
 
   return (
     <nav className="bg-blue-500 p-4 positiong: fixed top-0 z-50 w-full left-0">
-      <div className="container grid grid-cols-2 items-center">
+      <div className={`container grid items-center ${showLogo ? "grid-cols-2" : "grid-cols-1"}`}>
         <div className={`flex items-center gap-2 ${showLogo ? "" : "hidden"}`}>
         <img src={logo} alt="SkyScan Logo" className="h-8" />
           <p 

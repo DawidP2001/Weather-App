@@ -1,11 +1,10 @@
 /**
  * Things to do:
- * - Add a way to select the unit of measurement (Celsius/Fahrenheit)
- * - Add a way to select the unit of measurement for distance (Kilometers/Miles)
  * - Add a way make a modal when you click on the premium section
  * - Add a redirect to my website when you click on an ad
  * - Add more information to the footer for contact and about us
  * - Add a way to change the theme of the app (light/dark mode)
+ * - Add more animations to the app
  */
 
 import { useEffect, useState } from "react";

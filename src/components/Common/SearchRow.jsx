@@ -4,6 +4,7 @@ import { useState } from "react";
 export default function SearchRow({setLocation, className, setShowLogo, showLogo, setTempUnit, setDistUnit}) {
     const [input, setInput] = useState("");
     const [isOpen, setIsOpen] = useState(false);
+    const [showMobileSearch, setShowMobileSearch] = useState(false);
     console.log(isOpen);
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -13,11 +14,42 @@ export default function SearchRow({setLocation, className, setShowLogo, showLogo
     return (
         <>
             {/* Mobile */}
-            <div className={`flex md:hidden ${className} justify-self-end gap-2`}>
+            <div className={`flex md:hidden ${className} flex justify-self-end gap-2`}>
+                {/* Mobile Search bar */}
+                <form 
+                    className={`max-w-md mx-auto ${showMobileSearch ? "block" : "hidden"}`} 
+                    onSubmit={handleSubmit}
+                >   
+                    <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                    <div className="relative">
+                        <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                            <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                            </svg>
+                        </div>
+                        <input 
+                            type="search" 
+                            id="default-search"
+                            value={input}
+                            onChange={(e) => setInput(e.target.value)}
+                            className="min-h-10 block w-full p-2 ps-10 text-sm text-black border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500s dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+                            placeholder="Enter location here" 
+                            required 
+                        />
+                        <button 
+                            type="submit" 
+                            className="text-white absolute end-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            style={{ padding: "0.25rem 1rem", bottom: "0.4rem" }}
+                        >Search</button>
+                    </div>
+                </form>
                 {/* Search button */}
                 <button 
                     type="button" 
-                    onClick={() => setShowLogo(!showLogo)}
+                    onClick={() => {
+                        setShowLogo(!showLogo);
+                        setShowMobileSearch(!showMobileSearch);
+                    }}
                     className="inline-flex items-center justify-center p-2 w-10 h-10 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                 >
                 <span className="sr-only">Search</span>
