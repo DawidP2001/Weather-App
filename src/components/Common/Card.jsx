@@ -10,7 +10,7 @@ function CardKeyValuePair({ label, value }) {
 function Card({ children, className }) {
   return (
     <div
-        className={`m-auto relative flex flex-col my-6 bg-white shadow-2xl p-10 md:p-5 border border-slate-200 rounded-lg ${className}`}
+        className={`m-auto max-w-md lg:max-w-xl relative flex flex-col my-6 bg-white shadow-2xl p-5 md:p-10 border border-slate-200 rounded-lg ${className}`}
     >
       {children}
     </div>

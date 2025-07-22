@@ -67,7 +67,7 @@ function App() {
   if (!weather || !selectedDay) {
     return <div className="loading">Loading...</div>;
   }
-  const selectedDayTitle = `Selected Day: ${selectedDay.date} Weather Information`;
+  
   return (
     <div 
       className='flex flex-col items-center justify-center w-full mb-0 overflow-x-hidden'
@@ -79,7 +79,7 @@ function App() {
         <div>
           <Location weather={weather} current={weather.current} location={location} selectedDay={selectedDay} tempUnit={tempUnit} distUnit={distUnit} />
           <WeatherSection weather={weather} setSelectedDay={setSelectedDay} />
-          <DetailedInfo title={selectedDayTitle} selectedDay={selectedDay} tempUnit={tempUnit} distUnit={distUnit}/>
+          <DetailedInfo selectedDay={selectedDay} tempUnit={tempUnit} distUnit={distUnit}/>
           <HourlyChart selectedDay={selectedDay} />
           <DailyGrid selectedDay={selectedDay}/>
         </div>

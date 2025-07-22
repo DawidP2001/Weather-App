@@ -4,8 +4,9 @@
 import Card from './Common/Card.jsx';
 import HourlyChart from './HourlyChart.jsx';
 import CardKeyValuePair from './Common/CardKeyValuePair.jsx';
+import { format } from 'date-fns';
 
-function DetailedInfo({ title, selectedDay, tempUnit, distUnit }) {
+function DetailedInfo({selectedDay, tempUnit, distUnit }) {
   const lunarCard = (
     <div className="space-y-2">
       <h3 className="text-xl font-semibold mb-2 border-b pb-1">Astro</h3>
@@ -42,11 +43,18 @@ function DetailedInfo({ title, selectedDay, tempUnit, distUnit }) {
     </div>
   );
 
-  return (
-    <div className="todays-info mx-auto">
-      <div className='bg-white shadow-lg rounded-lg mx-auto'>
-        <h2 className="text-2xl font-bold mb-4">{title}</h2>
-        <p className="text-lg">Here you can display more detailed information about the selected day's weather.</p>
+return (
+    <div className="todays-info mx-auto mt-5">
+      <div className='mx-auto'>
+        <div className="text-center mb-6">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-gray-800 mb-2">
+            Weather Details
+          </h2>
+          <div className="w-24 h-1 bg-blue-500 mx-auto rounded-full mb-3"></div>
+          <p className="text-gray-600 text-sm md:text-base max-w-md mx-auto">
+            {selectedDay.date} {format(selectedDay.date, 'EEEE')} weather information
+          </p>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <Card>{lunarCard}</Card>
           <Card>{weatherCard}</Card>
