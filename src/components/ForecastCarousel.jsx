@@ -13,13 +13,36 @@ import 'swiper/css/navigation';
 // It maps through the forecast data and renders a DayForecast component for each day
 export default function ForecastCarousel({ weather, setSelectedDay}) {
     return (
-    <>
+    <div className="w-full flex flex-col items-center justify-center mb-8">
       <Swiper
-        slidesPerView={5}
-        spaceBetween={16}
+        slidesPerView={2}
+        spaceBetween={8}
         navigation={true}
         modules={[Navigation]}
-        className="mySwiper m-5 w-full max-w-4xl mx-auto bg-gray-200 overflow-hidden md:p-4 bg-white shadow-lg rounded-lg"
+        className="mySwiper w-full bg-white shadow-lg rounded-lg"
+        breakpoints={{
+          480: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
+          640: {
+            slidesPerView: 3,
+            spaceBetween: 12,
+          },
+          768: {
+            slidesPerView: 4,
+            spaceBetween: 14,
+          },
+          1024: {
+            slidesPerView: 5,
+            spaceBetween: 16,
+          },
+        }}
+        style={{
+          padding: '1rem',
+          margin: '1.25rem 0',
+          maxWidth: '100vw'
+        }}
       >
         {weather ?
            weather.forecast.forecastday.map((day, idx) => (
@@ -44,6 +67,6 @@ export default function ForecastCarousel({ weather, setSelectedDay}) {
           </SwiperSlide>
         ))}
       </Swiper>
-    </>
+    </div>
     );
 }

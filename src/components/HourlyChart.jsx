@@ -31,9 +31,8 @@ const data = [
 
 let options = {
   title: "Todays Temperature",
-  hAxis: { title: "Time", titleTextStyle: { color: "#333" } },
   vAxis: { minValue: 0 },
-  chartArea: { width: "70%", height: "70%" },
+  chartArea: { width: "100%", height: "70%" },
 };
 export default function HourlyChart({selectedDay}) {
   const [buttonState, setButtonState] = React.useState("Temperature");
@@ -46,24 +45,22 @@ export default function HourlyChart({selectedDay}) {
     }
     options = {
       title: `${selectedDay?.date} Temperature`,
-      hAxis: { 
-        title: "Time", 
-        titleTextStyle: { color: "#333" },
-        textStyle: { fontSize: window.innerWidth < 768 ? 10 : 12 }
-      },
       vAxis: { 
         minValue: 0, 
         title: "Temperature (°C)",
-        titleTextStyle: { fontSize: window.innerWidth < 768 ? 11 : 13 },
-        textStyle: { fontSize: window.innerWidth < 768 ? 10 : 12 }
+        titleTextStyle: { fontSize: window.innerWidth < 768 ? 10 : 13 },
+        textStyle: { fontSize: window.innerWidth < 768 ? 9 : 12 }
+      },
+      hAxis: {
+        textStyle: { fontSize: window.innerWidth < 768 ? 8 : 12 }
       },
       chartArea: { 
-        width: window.innerWidth < 768 ? "85%" : "70%", 
-        height: window.innerWidth < 768 ? "60%" : "70%",
-        left: window.innerWidth < 768 ? 50 : 80,
-        top: window.innerWidth < 768 ? 40 : 60
+        width: window.innerWidth < 768 ? "90%" : "85%", 
+        height: window.innerWidth < 768 ? "65%" : "70%",
+        left: window.innerWidth < 768 ? 40 : 80,
+        top: window.innerWidth < 768 ? 30 : 60
       },
-      titleTextStyle: { fontSize: window.innerWidth < 768 ? 14 : 16 },
+      titleTextStyle: { fontSize: window.innerWidth < 768 ? 12 : 16 },
       legend: { position: 'none' }
     }
     // Percipitation
@@ -74,24 +71,22 @@ export default function HourlyChart({selectedDay}) {
     }
     options = {
       title: `${selectedDay?.date} Percipitation`,
-      hAxis: { 
-        title: "Time", 
-        titleTextStyle: { color: "#333" },
-        textStyle: { fontSize: window.innerWidth < 768 ? 10 : 12 }
-      },
       vAxis: { 
         minValue: 0, 
         title: "Rainfall mm",
-        titleTextStyle: { fontSize: window.innerWidth < 768 ? 11 : 13 },
-        textStyle: { fontSize: window.innerWidth < 768 ? 10 : 12 }
+        titleTextStyle: { fontSize: window.innerWidth < 768 ? 10 : 13 },
+        textStyle: { fontSize: window.innerWidth < 768 ? 9 : 12 }
+      },
+      hAxis: {
+        textStyle: { fontSize: window.innerWidth < 768 ? 8 : 12 }
       },
       chartArea: { 
-        width: window.innerWidth < 768 ? "85%" : "70%", 
-        height: window.innerWidth < 768 ? "60%" : "70%",
-        left: window.innerWidth < 768 ? 50 : 80,
-        top: window.innerWidth < 768 ? 40 : 60
+        width: window.innerWidth < 768 ? "90%" : "85%", 
+        height: window.innerWidth < 768 ? "65%" : "70%",
+        left: window.innerWidth < 768 ? 40 : 80,
+        top: window.innerWidth < 768 ? 30 : 60
       },
-      titleTextStyle: { fontSize: window.innerWidth < 768 ? 14 : 16 },
+      titleTextStyle: { fontSize: window.innerWidth < 768 ? 12 : 16 },
       legend: { position: 'none' }
     }
     // Wind Speed 
@@ -102,36 +97,36 @@ export default function HourlyChart({selectedDay}) {
     }
     options = {
       title: `${selectedDay?.date} Wind Speed`,
-      hAxis: { 
-        title: "Time", 
-        titleTextStyle: { color: "#333" },
-        textStyle: { fontSize: window.innerWidth < 768 ? 10 : 12 }
-      },
       vAxis: { 
         minValue: 0, 
         title: "Wind Speed kph",
-        titleTextStyle: { fontSize: window.innerWidth < 768 ? 11 : 13 },
-        textStyle: { fontSize: window.innerWidth < 768 ? 10 : 12 }
+        titleTextStyle: { fontSize: window.innerWidth < 768 ? 10 : 13 },
+        textStyle: { fontSize: window.innerWidth < 768 ? 9 : 12 }
+      },
+      hAxis: {
+        textStyle: { fontSize: window.innerWidth < 768 ? 8 : 12 }
       },
       chartArea: { 
-        width: window.innerWidth < 768 ? "85%" : "70%", 
-        height: window.innerWidth < 768 ? "60%" : "70%",
-        left: window.innerWidth < 768 ? 50 : 80,
-        top: window.innerWidth < 768 ? 40 : 60
+        width: window.innerWidth < 768 ? "90%" : "85%", 
+        height: window.innerWidth < 768 ? "65%" : "70%",
+        left: window.innerWidth < 768 ? 40 : 80,
+        top: window.innerWidth < 768 ? 30 : 60
       },
-      titleTextStyle: { fontSize: window.innerWidth < 768 ? 14 : 16 },
+      titleTextStyle: { fontSize: window.innerWidth < 768 ? 12 : 16 },
       legend: { position: 'none' }
     }
   }
   return (
-    <div className="p-2 md:p-4 m-2 md:m-5 bg-white flex flex-col justify-center shadow-lg rounded-lg overflow-x-auto">
+    <div 
+      className="p-2 md:p-4 m-2 md:m-5 bg-white flex flex-col justify-center shadow-lg rounded-lg overflow-x-auto"
+      >
       <div className="min-w-full md:min-w-96 min-w-sm flex items-center justify-center">
         <Chart 
           chartType="AreaChart" 
           data={data} 
           options={options}
           width="100%"
-          height={window.innerWidth < 768 ? "300px" : "400px"}
+          height={window.innerWidth < 768 ? "250px" : "400px"}
           className="chart"
         />
       </div>

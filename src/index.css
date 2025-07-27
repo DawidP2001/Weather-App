@@ -92,7 +92,7 @@ div.swiper-wrapper {
   z-index: 0;
   position: relative;
   max-width: 350px;
-  left: 275px;
+  left: 30px;
   }
   div.chart {
     max-width: 100vw;

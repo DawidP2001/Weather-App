@@ -70,7 +70,7 @@ function App() {
   
   return (
     <div 
-      className='flex flex-col items-center justify-center w-full mb-0 overflow-x-hidden'
+      className='flex flex-col items-center justify-center w-full mb-0'
       style={{maxWidth: "100vw", overflowX: "hidden"}}
     >
       <Navbar setLocation={setLocation} setTempUnit={setTempUnit} setDistUnit={setDistUnit} />
